@@ -892,14 +892,14 @@ public class Action extends BaseClass {
 	    }
 
 	    // Return the path of the saved screenshot (can be used for logging/reporting)
-	    return destination;
-
-	    // Jenkins code to save screenshot (commented out)
-	    // Uncomment when running in Jenkins environment
-	    // String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
-	    //        + dateName + ".png";
-	    // return newImageString;
-	}
+	    //return destination;
+		
+		  // Jenkins code to save screenshot (commented out) // Uncomment when running in Jenkins environment 
+		 String newImageString =
+		  "http://localhost:8080/view/Rough%20Work/job/MicroProject/ws/MyStoreProject_git/ScreenShots/" +
+		  filename + "_"  + dateName + ".png"; 
+		 return newImageString;
+		 	}
 
 	
 	public String getCurrentTime() {
