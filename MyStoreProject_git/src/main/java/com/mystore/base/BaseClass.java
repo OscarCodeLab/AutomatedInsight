@@ -25,7 +25,7 @@ public class BaseClass {
 	public static Logger log = LogManager.getLogger(BaseClass.class);
 	public static Action Action;
 	public static ExcelReader excel = new ExcelReader(
-			"C:\\Users\\hp\\eclipse-workspace\\MyStoreProject_git\\src\\test\\resources\\TestData\\AccountCreationTestData.xlsx");
+			"C:\\Users\\hp\\git\\AutomateInsight\\MyStoreProject_git\\src\\test\\resources\\TestData\\AccountCreationTestData.xlsx");
 	public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
 
 	public static WebDriver getDriver() {
