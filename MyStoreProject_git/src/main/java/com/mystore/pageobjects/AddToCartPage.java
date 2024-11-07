@@ -40,7 +40,7 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public void enterQuantity(String total) {
-		Action.explicitWait(driver.get(), quantity, 10);
+		Action.fluentWait(driver.get(), quantity, 10);
 		Action.type(quantity, total);
 	}
 
@@ -49,7 +49,7 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public void selectSize(String large) {
-		Action.explicitWait(driver.get(), selectSize, 5);
+		Action.fluentWait(driver.get(), selectSize, 5);
 		Action.selectByVisibleText(large, selectSize);
 	}
 	
