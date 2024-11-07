@@ -15,9 +15,9 @@
         
         <!-- Report name displayed at top-nav -->
         <reportName>
-            MyStoreProject Report
             <![CDATA[
-                <img src='http://localhost:8080/view/Rough%20Work/job/MicroProject/ws/MyStoreProject_git/Logo/rsz_1logo.png'/>  
+                <span style="float: left; margin-right: 10px;">MyStoreProject Report</span>
+                <img src='http://localhost:8080/view/Rough%20Work/job/MicroProject/ws/MyStoreProject_git/Logo/rsz_1logo.png' style="float: left; height: 90%; margin-top: 3px;"/>
             ]]>
         </reportName>
         
@@ -36,11 +36,11 @@
         <!-- Custom styles -->
         <styles>
             <![CDATA[
-                .report-name { padding-left: 18px; }
+                .report-name { padding-left: 18px; display: flex; align-items: center; }
                 .report-name > img {
                     float: left;
                     height: 90%;
-                    margin-left: 30px;
+                    margin-left: 10px;
                     margin-top: 3px;
                     width: auto;
                 }
