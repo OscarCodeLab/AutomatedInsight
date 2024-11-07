@@ -16,7 +16,7 @@ public class AddToCartPage extends BaseClass {
 	@FindBy(id = "group_1")
 	WebElement selectSize;
 	
-	@FindBy(css = "#quantity_wanted") 
+	@FindBy(xpath = "//input[@id='quantity_wanted']") 
 	WebElement quantity;
 	
 	@FindBy(id = "color_8")
@@ -35,7 +35,7 @@ public class AddToCartPage extends BaseClass {
     WebElement shirtattributes;
 	
 	public void colourwhite() {
-		Action.explicitWait(driver.get(), shirtColorBtn, 5);
+		//Action.explicitWait(driver.get(), shirtColorBtn, 5);
 		Action.JSClick(driver.get(), shirtColorBtn);
 	}
 	
@@ -49,6 +49,7 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public void selectSize(String large) {
+		Action.explicitWait(driver.get(), selectSize, 5);
 		Action.selectByVisibleText(large, selectSize);
 	}
 	
