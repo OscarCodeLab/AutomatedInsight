@@ -4,13 +4,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
 
 public class AddressPage extends BaseClass{
-		
+	Action action = new Action();
 		
 		@FindBy(xpath ="//button[@name='processAddress']//span[contains(text(),'Proceed to checkout')]" )
-		public WebElement proceedToCheckOut;
+		private WebElement proceedToCheckOut;
 		
 		
 		public AddressPage() {
@@ -18,8 +19,8 @@ public class AddressPage extends BaseClass{
 		}
 		
 		public ShippingPage clickOnCheckOut() {
-		//	Action.fluentWait(driver.get(), proceedToCheckOut, 10);
-			Action.JSClick(driver.get(), proceedToCheckOut);
+		//	action.fluentWait(driver.get(), proceedToCheckOut, 10);
+			action.JSClick(driver.get(), proceedToCheckOut);
 			return new ShippingPage();
 		}
 }

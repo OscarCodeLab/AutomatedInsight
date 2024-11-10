@@ -4,28 +4,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
 
 public class HomePage extends BaseClass {
-	
+	Action action = new Action();
 	public HomePage() {
 		PageFactory.initElements(driver.get(), this);
 	}
 
 	@FindBy(css ="a[title='Information'] span")
-	WebElement personalInformation;
+	private WebElement personalInformation;
 	
 	@FindBy(css ="a[title='Addresses'] span")
-	WebElement myAddresses;
+	private WebElement myAddresses;
 
 public boolean validateMyPersonalInformation() {
 	
-	return Action.isDisplayed(driver.get(), personalInformation);
+	return action.isDisplayed(driver.get(), personalInformation);
 }
 
 public boolean validateMyAddresses() {
 
-    return Action.isDisplayed(driver.get(), myAddresses);
+    return action.isDisplayed(driver.get(), myAddresses);
 }
 
 public String getCurrentURL() {

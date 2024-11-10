@@ -4,23 +4,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
 
 public class PaymentPage extends BaseClass {
-	
+	Action action = new Action();
 	public PaymentPage() {
 		PageFactory.initElements(driver.get(), this);
 	}
 	
 	@FindBy(xpath ="//a[@title='Pay by bank wire']")
-	public WebElement bankWireMethod;
+	private WebElement bankWireMethod;
 	
 	@FindBy(xpath ="//a[@title='Pay by check.']" )
-	public WebElement payByCheckMethod;
+	private WebElement payByCheckMethod;
 	
 	public OrderSummaryPage clickOnPaymentMethod() {
-		Action.explicitWait(driver.get(), bankWireMethod, 5);
-		Action.click(driver.get(), bankWireMethod);
+		action.explicitWait(driver.get(), bankWireMethod, 5);
+		action.click(driver.get(), bankWireMethod);
 		return new OrderSummaryPage();
 	}
 

@@ -4,51 +4,52 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
 
 public class LoginPage extends BaseClass{
-	
+	Action action = new Action();
 	public LoginPage() {
 		PageFactory.initElements(driver.get(), this);
     }
 	
 	@FindBy(id = "email")
-	WebElement emailField;
+	private WebElement emailField;
 	
 	@FindBy(id = "passwd")
-	WebElement passwordField;
+	private WebElement passwordField;
 	
 	@FindBy(id = "SubmitLogin")
-	WebElement signInBtn;
+	private WebElement signInBtn;
 	
 	@FindBy(css = "a[title='Recover your forgotten password']")
-	WebElement forgotPasswordLinkText;
+	private WebElement forgotPasswordLinkText;
 	
 	@FindBy(id = "email_create")
-	WebElement emailForNewAccount;
+	private WebElement emailForNewAccount;
 	
 	@FindBy(name = "SubmitCreate")
-	WebElement createNewAccountBtn;
+	private WebElement createNewAccountBtn;
 	
 	public HomePage login(String email, String password) {	
-		Action.type(emailField, email);
-		Action.type(passwordField, password);
-		Action.click(driver.get(), signInBtn);
+		action.type(emailField, email);
+		action.type(passwordField, password);
+		action.click(driver.get(), signInBtn);
 		
 		return new HomePage();
 	}
 	
 	public AddressPage login1(String email, String password) {	
-		Action.type(emailField, email);
-		Action.type(passwordField, password);
-		Action.click(driver.get(), signInBtn);
+		action.type(emailField, email);
+		action.type(passwordField, password);
+		action.click(driver.get(), signInBtn);
 		
 		return new AddressPage();
 	}
 	
 	public AccountCreationPage createNewAccount(String newEmail) {
-		Action.type(emailForNewAccount, newEmail);
-		Action.click(driver.get(), createNewAccountBtn);
+		action.type(emailForNewAccount, newEmail);
+		action.click(driver.get(), createNewAccountBtn);
 		
 		return new AccountCreationPage();
 	}

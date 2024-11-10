@@ -24,34 +24,36 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.mystore.actioninterface.ActionInterface;
 import com.mystore.base.BaseClass;
 
 /**
  * @author Hitendra Verma added on 13th March2019
  *
  */
-public class Action extends BaseClass {
-
+public class Action extends BaseClass implements ActionInterface{
+	@Override
 	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", ele);
 
 	}
 
-	
+	@Override
 	public void click(WebDriver driver, WebElement ele) {
 
 		Actions act = new Actions(driver);
 		act.moveToElement(ele).click().build().perform();
 
 	}
-	
+	@Override
 	 public void clearTextField(WebElement element) {
 	        element.clear();
 	    }
 
 	
 	 // Add the getText method
+	 @Override
 	    public String getText(WebDriver driver, WebElement ele) {
 	        String text = null;
 	        try {
@@ -62,7 +64,7 @@ public class Action extends BaseClass {
 	        }
 	        return text;
 	    }
-	 
+	 @Override
 	public boolean findElement(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		try {
@@ -82,7 +84,7 @@ public class Action extends BaseClass {
 		return flag;
 	}
 
-	
+	@Override
 	public boolean isDisplayed(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		flag = findElement(driver, ele);
@@ -99,7 +101,7 @@ public class Action extends BaseClass {
 		return flag;
 	}
 
-	
+	@Override
 	public boolean isSelected(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		flag = findElement(driver, ele);
@@ -116,7 +118,7 @@ public class Action extends BaseClass {
 		return flag;
 	}
 
-	
+	@Override
 	public boolean isEnabled(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		flag = findElement(driver, ele);
@@ -140,7 +142,7 @@ public class Action extends BaseClass {
 	 * @param text
 	 * @return - true/false
 	 */
-	
+	@Override
 	public boolean type(WebElement ele, String text) {
 		boolean flag = false;
 		try {
@@ -172,6 +174,7 @@ public class Action extends BaseClass {
      * @return True if the option is selected successfully, false otherwise.
      * @throws Exception If an error occurs during selection.
      */
+	@Override
 	public boolean selectByVisibleTextjs(WebElement dropdownElement, String visibleText) {
 	    boolean flag = false;  // Define the flag variable
 	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdownElement);
@@ -211,6 +214,7 @@ public class Action extends BaseClass {
      * @return True if the option is selected successfully, false otherwise.
      * @throws Exception If an error occurs during selection.
      */
+	@Override
 	public boolean selectByValuejs(WebElement dropdownElement, String value) {
 	    boolean flag = false;  // Define the flag variable
 	    try {
@@ -253,6 +257,7 @@ public class Action extends BaseClass {
      * @return True if the option is selected successfully, false otherwise.
      * @throws Exception If an error occurs during selection or the index is out of bounds.
      */
+	@Override
 	public boolean selectByIndexjs(WebElement dropdownElement, int index) {
 	    boolean flag = false;  // Define the flag variable
 	    try {
@@ -297,7 +302,7 @@ public class Action extends BaseClass {
 	 *                    Listbox etc..)
 	 * 
 	 */
-	
+	@Override
 	public boolean selectByIndex(WebElement element, int index) {
 		boolean flag = false;
 		try {
@@ -328,7 +333,7 @@ public class Action extends BaseClass {
 	 *                    Listbox etc..)
 	 */
 
-	
+	@Override
 	public boolean selectByValue(WebElement element,String value) {
 		boolean flag = false;
 		try {
@@ -362,7 +367,7 @@ public class Action extends BaseClass {
 	 *                    Listbox etc..)
 	 */
 
-	
+	@Override
 	public boolean selectByVisibleText(String visibletext, WebElement ele) {
 		boolean flag = false;
 		try {
@@ -381,7 +386,7 @@ public class Action extends BaseClass {
 		}
 	}
 
-	
+	@Override
 	public boolean mouseHoverByJavaScript(WebElement ele) {
 		boolean flag = false;
 		try {
@@ -407,7 +412,7 @@ public class Action extends BaseClass {
 		}
 	}
 
-	
+	@Override
 	public boolean JSClick(WebDriver driver, WebElement ele) {
 	    boolean flag = false;
 	    try {
@@ -422,7 +427,7 @@ public class Action extends BaseClass {
 	}
 
 
-	
+	@Override
 	public boolean switchToFrameByIndex(WebDriver driver,int index) {
 		boolean flag = false;
 		try {
@@ -448,7 +453,7 @@ public class Action extends BaseClass {
 	 * @param idValue : Frame ID wish to switch
 	 * 
 	 */
-	
+	@Override
 	public boolean switchToFrameById(WebDriver driver,String idValue) {
 		boolean flag = false;
 		try {
@@ -474,7 +479,7 @@ public class Action extends BaseClass {
 	 * @param nameValue : Frame Name wish to switch
 	 * 
 	 */
-	
+	@Override
 	public boolean switchToFrameByName(WebDriver driver,String nameValue) {
 		boolean flag = false;
 		try {
@@ -493,7 +498,7 @@ public class Action extends BaseClass {
 		}
 	}
 
-	
+	@Override
 	public boolean switchToDefaultFrame(WebDriver driver) {
 		boolean flag = false;
 		try {
@@ -512,7 +517,7 @@ public class Action extends BaseClass {
 		}
 	}
 
-	
+	@Override
 	public void mouseOverElement(WebDriver driver,WebElement element) {
 		boolean flag = false;
 		try {
@@ -529,7 +534,7 @@ public class Action extends BaseClass {
 		}
 	}
 
-	
+	@Override
 	public boolean moveToElement(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		try {
@@ -546,7 +551,7 @@ public class Action extends BaseClass {
 		return flag;
 	}
 
-	
+	@Override
 	public boolean mouseover(WebDriver driver, WebElement ele) {
 		boolean flag = false;
 		try {
@@ -565,7 +570,7 @@ public class Action extends BaseClass {
 			 */
 		}
 	}
-	
+	@Override
 	public boolean draggable(WebDriver driver,WebElement source, int x, int y) {
 		boolean flag = false;
 		try {
@@ -586,7 +591,7 @@ public class Action extends BaseClass {
 			}
 		}
 	}
-	
+	@Override
 	public boolean draganddrop(WebDriver driver,WebElement source, WebElement target) {
 		boolean flag = false;
 		try {
@@ -605,7 +610,7 @@ public class Action extends BaseClass {
 		}
 	}
 	
-	
+	@Override
 	public boolean slider(WebDriver driver,WebElement ele, int x, int y) {
 		boolean flag = false;
 		try {
@@ -627,7 +632,7 @@ public class Action extends BaseClass {
 		}
 	}
 	
-	
+	@Override
 	public boolean rightclick(WebDriver driver,WebElement ele) {
 		boolean flag = false;
 		try {
@@ -648,7 +653,7 @@ public class Action extends BaseClass {
 		}
 	}
 	
-	
+	@Override
 	public boolean switchWindowByTitle(WebDriver driver,String windowTitle, int count) {
 		boolean flag = false;
 		try {
@@ -675,7 +680,7 @@ public class Action extends BaseClass {
 			}
 		}
 	}
-	
+	@Override
 	public boolean switchToNewWindow(WebDriver driver) {
 		boolean flag = false;
 		try {
@@ -696,7 +701,7 @@ public class Action extends BaseClass {
 			}
 		}
 	}
-	
+	@Override
 	public boolean switchToOldWindow(WebDriver driver) {
 		boolean flag = false;
 		try {
@@ -717,7 +722,7 @@ public class Action extends BaseClass {
 			}
 		}
 	}
-	
+	@Override
 	public int getColumncount(WebElement row) {
 		List<WebElement> columns = row.findElements(By.tagName("td"));
 		int a = columns.size();
@@ -729,7 +734,7 @@ public class Action extends BaseClass {
 		return a;
 	}
 	
-	
+	@Override
 	public int getRowCount(WebElement table) {
 		List<WebElement> rows = table.findElements(By.tagName("tr"));
 		int a = rows.size() - 1;
@@ -743,7 +748,7 @@ public class Action extends BaseClass {
 	 * @return: Boolean (True: If alert preset, False: If no alert)
 	 * 
 	 */
-	
+	@Override
 	public boolean Alert(WebDriver driver) {
 		boolean presentFlag = false;
 		Alert alert = null;
@@ -769,7 +774,7 @@ public class Action extends BaseClass {
 
 		return presentFlag;
 	}
-	
+	@Override
 	public boolean launchUrl(WebDriver driver,String url) {
 		boolean flag = false;
 		try {
@@ -787,7 +792,7 @@ public class Action extends BaseClass {
 		}
 	}
 	
-	
+	@Override
 	public boolean isAlertPresent(WebDriver driver) 
 	{ 
 		try 
@@ -801,7 +806,7 @@ public class Action extends BaseClass {
 		}   // catch 
 	}
 	
-	
+	@Override
 	public String getTitle(WebDriver driver) {
 		boolean flag = false;
 
@@ -812,7 +817,7 @@ public class Action extends BaseClass {
 		return text;
 	}
 	
-	
+	@Override
 	public String getCurrentURL(WebDriver driver)  {
 		boolean flag = false;
 
@@ -823,7 +828,7 @@ public class Action extends BaseClass {
 		return text;
 	}
 	
-	
+	@Override
 	public boolean click1(WebElement locator, String locatorName) {
 		boolean flag = false;
 		try {
@@ -842,7 +847,7 @@ public class Action extends BaseClass {
 
 	}
 	
-	
+	@Override
 	public void fluentWait(WebDriver driver,WebElement element, int timeOut) {
 	    Wait<WebDriver> wait = null;
 	    try {
@@ -855,24 +860,24 @@ public class Action extends BaseClass {
 	    }catch(Exception e) {
 	    }
 	}
-	
+	@Override
 	public void implicitWait(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeOut));
 	}
-	
+	@Override
 	public void explicitWait(WebDriver driver, WebElement element, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
+	@Override
 	public void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeOut));
 	}
-	
+	@Override
 	public void maximizePageWindow(WebDriver driver) {
 		driver.manage().window().maximize();
 	}
-	
+	@Override
 	public String screenShot(WebDriver driver, String filename) {
 	    // Create a timestamp for the filename
 	    String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -892,16 +897,16 @@ public class Action extends BaseClass {
 	    }
 
 	    // Return the path of the saved screenshot (can be used for logging/reporting)
-	    //return destination;
-		
-		  // Jenkins code to save screenshot (commented out) // Uncomment when running in Jenkins environment 
-		 String newImageString =
-		  "http://localhost:8080/view/Rough%20Work/job/MicroProject/ws/MyStoreProject_git/ScreenShots/" +
-		  filename + "_"  + dateName + ".png"; 
-		 return newImageString;
-		 	}
+	    return destination;
 
-	
+	    // Jenkins code to save screenshot (commented out)
+	    // Uncomment when running in Jenkins environment
+	    // String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
+	    //        + dateName + ".png";
+	    // return newImageString;
+	}
+
+	@Override
 	public String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;

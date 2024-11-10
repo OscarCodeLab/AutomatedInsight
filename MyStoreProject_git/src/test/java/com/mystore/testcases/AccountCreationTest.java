@@ -34,7 +34,7 @@ public class AccountCreationTest extends BaseClass {
         
        login = index.clickSignInBtn();
        account = login.createNewAccount(prop.getProperty("newemailaccount"));
-       boolean result = account.validateformtitle();
+       boolean result = account.validateFormTitle();
        Assert.assertTrue(result);
        
     	

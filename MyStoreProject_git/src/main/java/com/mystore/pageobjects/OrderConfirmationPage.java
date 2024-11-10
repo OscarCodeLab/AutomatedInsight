@@ -9,7 +9,7 @@ import com.mystore.base.BaseClass;
 public class OrderConfirmationPage extends BaseClass{
 
 	@FindBy(xpath = "//p[@class='alert alert-success']")
-	public WebElement confirmMessage;
+	private WebElement confirmMessage;
 	
 	
 	public OrderConfirmationPage() {

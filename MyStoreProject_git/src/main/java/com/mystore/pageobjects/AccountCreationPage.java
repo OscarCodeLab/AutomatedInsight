@@ -3,65 +3,70 @@ package com.mystore.pageobjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
 
-public class AccountCreationPage extends BaseClass{
-    
-	public AccountCreationPage() {
-		PageFactory.initElements(driver.get(), this);
-	}
-	
-	@FindBy(css = ".page-heading")
-	WebElement formTitle;
-	
-	@FindBy(id = "id_gender1")
-	WebElement mr;
-	@FindBy(id = "customer_firstname")
-	public WebElement customerFirstName;
-	
-	@FindBy(id = "customer_lastname")
-	public WebElement customerLastName;
-	
-	@FindBy(xpath = "//input[@id='email']")
-	public WebElement customereemail;
-	
-	@FindBy(id = "passwd")
-	public WebElement createPassword;
-	
-	@FindBy(id = "days")
-	public WebElement days;
-	
-	@FindBy(id = "months")
-	public WebElement months;
-	
-	@FindBy(id = "years")
-	public WebElement years;
-	
-	
-	@FindBy(id = "newsletter")
-	public WebElement newsletter;
-	
-	@FindBy(xpath = "//span[normalize-space()='Register']")
-	public WebElement register;
-	
-	
-	
-	public void accountCreationPages(String firstName, String lastName, String newPassword, String day, String month, String year) {
-		Action.click(driver.get(), mr);
-		Action.type(customerFirstName, firstName);
-		Action.type(customerLastName, lastName);
-		//Action.explicitWait(getWebDriver(), createPassword, 5);
-		Action.type(createPassword, newPassword);
-	
-		Action.selectByValue(days, day);
-		Action.selectByValue(months, month);
-		Action.selectByValue(years, year);
-		Action.click(driver.get(), newsletter);
-		Action.click(driver.get(), register);
-	}
-	
-	public boolean validateformtitle() {
-		return Action.isDisplayed(driver.get(), formTitle);
-	}
+public class AccountCreationPage extends BaseClass {
+    Action action = new Action(); // Renamed to follow Java naming conventions
+
+    // Constructor to initialize elements
+    public AccountCreationPage() {
+        PageFactory.initElements(driver.get(), this);
+    }
+
+    // Page elements
+    @FindBy(css = ".page-heading")
+    private WebElement formTitle;
+
+    @FindBy(id = "id_gender1")
+    private WebElement mr;
+
+    @FindBy(id = "customer_firstname")
+    private WebElement customerFirstName;
+
+    @FindBy(id = "customer_lastname")
+    private WebElement customerLastName;
+
+    @FindBy(xpath = "//input[@id='email']")
+    private WebElement customerEmail; // Corrected field name
+
+    @FindBy(id = "passwd")
+    private WebElement createPassword;
+
+    @FindBy(id = "days")
+    private WebElement days;
+
+    @FindBy(id = "months")
+    private WebElement months;
+
+    @FindBy(id = "years")
+    private WebElement years;
+
+    @FindBy(id = "newsletter")
+    private WebElement newsletter;
+
+    @FindBy(xpath = "//span[normalize-space()='Register']")
+    private WebElement register;
+
+    // Method to fill in the account creation form and submit
+    public MyAccountPage createAccount(String firstName, String lastName, String newPassword, String day, String month, String year) {
+        action.click(driver.get(), mr);
+        action.type(customerFirstName, firstName);
+        action.type(customerLastName, lastName);
+        action.type(customerEmail, firstName + "." + lastName + "@example.com"); // Example email, you can modify as needed
+        action.type(createPassword, newPassword);
+
+        action.selectByValue(days, day);
+        action.selectByValue(months, month);
+        action.selectByValue(years, year);
+        action.click(driver.get(), newsletter);
+        action.click(driver.get(), register);
+
+        return new MyAccountPage();
+    }
+
+    // Method to validate if the form title is displayed
+    public boolean validateFormTitle() {
+        return action.isDisplayed(driver.get(), formTitle);
+    }
 }
